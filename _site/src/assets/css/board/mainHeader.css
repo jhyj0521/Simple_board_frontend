@@ -1,0 +1,9 @@
+.title_mainTop { position: relative; display: flex; flex-direction: row; align-items: flex-end; width: 100%; margin-top: 30px; } 
+.title_leftNav { width: 33%; text-align: center; }
+.title_center { width: 33%; text-align: center; }
+.title_center span { color: #fff; font-size: 60px; }
+.title_rightNav { width: 33%; }
+.title_rightNav li { float: left; list-style: none;}
+.rightNav_profile { }
+
+.btn_basic { min-width: 100px; min-height: 30px; width: auto; border-radius: 10px; background-color: rgb(48, 51, 211); color: #fff; border: none; cursor: pointer; }
