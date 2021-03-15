@@ -10,9 +10,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped src="../../assets/css/member/form.css"></style>
