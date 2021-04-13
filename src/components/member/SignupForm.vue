@@ -1,61 +1,66 @@
 <template>
   <div class="main_loginBox">
-    <ValidationProvider
-      name="아이디"
-      rules="required|email"
-      v-slot="{ errors }"
-    >
-      <input
-        type="text"
-        class="login_id"
-        placeholder="아이디"
-        v-model="member.memberId"
-      />
-      <span>{{ errors[0] }}</span>
-    </ValidationProvider>
-    <ValidationProvider name="이름" rules="required" v-slot="{ errors }">
-      <input
-        type="text"
-        class="login_name"
-        placeholder="이름"
-        v-model="member.memberName"
-      />
-      <span>{{ errors[0] }}</span>
-    </ValidationProvider>
-    <ValidationProvider
-      name="비밀번호"
-      vid="password"
-      rules="required|checkSpace|regex|min:10|max:32"
-      v-slot="{ errors }"
-    >
-      <input
-        type="password"
-        class="login_pw"
-        placeholder="비밀번호"
-        v-model="member.password"
-      />
-      <span>{{ errors[0] }}</span>
-    </ValidationProvider>
-    <ValidationProvider
-      name="비밀번호 확인"
-      rules="confirmed:password"
-      v-slot="{ errors }"
-    >
-      <input
-        type="password"
-        class="login_pw"
-        placeholder="비밀번호 확인"
-        v-model="reEnterPassword"
-      />
-      <span>{{ errors[0] }}</span>
-    </ValidationProvider>
-    <button class="btn_signup" @click="signupMethod">회원가입</button>
+    <ValidationObserver v-slot="{ handleSubmit }">
+      <form @submit.prevent="handleSubmit(signupMethod)">
+        <ValidationProvider
+          name="아이디"
+          rules="required|email"
+          v-slot="{ errors }"
+        >
+          <input
+            type="text"
+            class="login_id"
+            placeholder="아이디"
+            v-model="member.memberId"
+          />
+          <span>{{ errors[0] }}</span>
+        </ValidationProvider>
+        <ValidationProvider name="이름" rules="required" v-slot="{ errors }">
+          <input
+            type="text"
+            class="login_name"
+            placeholder="이름"
+            v-model="member.memberName"
+          />
+          <span>{{ errors[0] }}</span>
+        </ValidationProvider>
+        <ValidationProvider
+          name="비밀번호"
+          vid="password"
+          rules="required|checkSpace|regex|min:10|max:32"
+          v-slot="{ errors }"
+        >
+          <input
+            type="password"
+            class="login_pw"
+            placeholder="비밀번호"
+            v-model="member.password"
+          />
+          <span>{{ errors[0] }}</span>
+        </ValidationProvider>
+        <ValidationProvider
+          name="비밀번호 확인"
+          rules="required|confirmed:password"
+          v-slot="{ errors }"
+        >
+          <input
+            type="password"
+            class="login_pw"
+            placeholder="비밀번호 확인"
+            v-model="reEnterPassword"
+            @keyup.enter="signupMethod"
+          />
+          <span>{{ errors[0] }}</span>
+        </ValidationProvider>
+        <button type="submit" class="btn_signup">회원가입</button>
+      </form>
+    </ValidationObserver>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
-import { extend, ValidationProvider } from "vee-validate";
+import { extend, ValidationProvider, ValidationObserver } from "vee-validate";
 import { required, email, min, max, confirmed } from "vee-validate/dist/rules";
 
 extend("required", {
@@ -108,7 +113,8 @@ extend("confirmed", {
 
 export default {
   components: {
-    ValidationProvider
+    ValidationProvider,
+    ValidationObserver
   },
   data() {
     return {
