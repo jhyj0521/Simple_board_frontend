@@ -1,9 +1,8 @@
 import axios from "axios";
 
-function register(member) {
-  console.log(member);
+const register = data => {
   const url = "http://localhost:8080/members/new";
-  return axios.post(url, member);
-}
+  return axios.post(url, data);
+};
 
 export default { register };

@@ -1,4 +1,5 @@
-.main_loginBox { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; width: 400px; height: 450px; background-color: #fff; border-radius: 10px; }
-.main_loginBox input { display: block; margin: 0 auto; padding-left: 5px; font-size: 14px; width: 300px; height: 40px; margin: 12px 0; }
-.main_loginBox button { display: block; cursor: pointer; width: 300px; height: 40px; font-size: 15px; font-weight: bold; color: #fff; background-color: #4F5251; border: none; border-radius: 5px; margin: 10px 0; }
+.main_loginBox { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; width: 400px; height: 500px; background-color: #fff; border-radius: 10px; }
+.main_loginBox input { display: block; margin: 0 auto; padding-left: 5px; font-size: 14px; width: 300px; height: 40px; margin: 15px 0; }
+.main_loginBox button { display: block; cursor: pointer; width: 300px; height: 40px; font-size: 15px; font-weight: bold; color: #fff; background-color: #4F5251; border: none; border-radius: 5px; margin: 10px; margin-top: 20px;}
 .main_loginBox button:hover { background-color: gray;}
+.main_loginBox span { color: #EB0600; font-size: 13px; }
