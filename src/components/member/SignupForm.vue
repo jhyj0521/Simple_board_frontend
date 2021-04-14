@@ -1,7 +1,7 @@
 <template>
   <div class="main_loginBox">
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(signupMethod)">
+      <form @submit.prevent="handleSubmit(submitForm)">
         <ValidationProvider
           name="아이디"
           rules="required|email"
@@ -48,7 +48,7 @@
             class="login_pw"
             placeholder="비밀번호 확인"
             v-model="reEnterPassword"
-            @keyup.enter="signupMethod"
+            @keyup.enter="submitForm"
           />
           <span>{{ errors[0] }}</span>
         </ValidationProvider>
@@ -128,10 +128,23 @@ export default {
   },
   methods: {
     ...mapActions(["register"]),
-    async signupMethod() {
-      const result = await this.register(this.member);
-
-      console.log(result);
+    async submitForm() {
+      try {
+        await this.register(this.member);
+        alert("정상적으로 회원 가입이 완료되었습니다.");
+        this.$router.push("/login");
+      } catch (error) {
+        console.log(error.response);
+        alert(error.response.data.message);
+      } finally {
+        this.initForm();
+      }
+    },
+    initForm() {
+      this.member.memberId = "";
+      this.member.memberName = "";
+      this.member.password = "";
+      this.reEnterPassword = "";
     }
   }
 };
