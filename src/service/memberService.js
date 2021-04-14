@@ -1,8 +1,12 @@
 import axios from "axios";
 
+// API 설정 공통화
+const axiosService = axios.create({
+  baseURL: process.env.VUE_APP_API_URL
+});
+
 const register = data => {
-  const url = "http://localhost:8080/members/new";
-  return axios.post(url, data);
+  return axiosService.post("members/new", data);
 };
 
 export default { register };
