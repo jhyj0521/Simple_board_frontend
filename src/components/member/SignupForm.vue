@@ -48,7 +48,6 @@
             class="login_pw"
             placeholder="비밀번호 확인"
             v-model="reEnterPassword"
-            @keyup.enter="submitForm"
           />
           <span>{{ errors[0] }}</span>
         </ValidationProvider>
