@@ -21,75 +21,12 @@
           <th>작성일</th>
           <th>좋아요</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>안녕이정훈못난아</td>
-          <td>유댕이</td>
-          <td>2020/02/20</td>
-          <td>232</td>
+        <tr v-for="(board, index) in boardList" v-bind:key="index">
+          <td>{{ board.boardNo }}</td>
+          <td>{{ board.title }}</td>
+          <td>{{ board.memberName }}</td>
+          <td>{{ board.regDate }}</td>
+          <td>{{ board.likeCnt }}</td>
         </tr>
       </table>
     </div>
@@ -109,7 +46,30 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+
+export default {
+  data() {
+    return {
+      boardList: {}
+    };
+  },
+  methods: {
+    ...mapActions(["getBoardList"]),
+    async getBoardListMethod() {
+      try {
+        const result = await this.getBoardList();
+        this.boardList = result.list;
+        console.log(this.boardList);
+      } catch (error) {
+        console.log(error.response);
+      }
+    }
+  },
+  created() {
+    this.getBoardListMethod();
+  }
+};
 </script>
 
 <style scoped src="../../assets/css/board/boardList.css"></style>
