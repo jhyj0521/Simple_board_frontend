@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import boardService from "../service/boardService";
+import boardService from "../api/board";
 
 export const board = {
   actions: {

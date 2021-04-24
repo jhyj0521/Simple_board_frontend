@@ -1,7 +1,7 @@
 <template>
   <div class="content_mainBox">
     <div class="content_search">
-      <input type="text" class="login_id" placeholder="아이디" />
+      <input type="text" class="login_id" placeholder="검색어를 입력해주세요" />
       <a class="searchBtn" title="search">search</a>
     </div>
 
