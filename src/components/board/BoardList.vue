@@ -23,7 +23,9 @@
         </tr>
         <tr v-for="(board, index) in boardList" v-bind:key="index">
           <td>{{ board.boardNo }}</td>
-          <td>{{ board.title }}</td>
+          <td>
+            <a href="">{{ board.title }}</a>
+          </td>
           <td>{{ board.memberName }}</td>
           <td>{{ board.regDate }}</td>
           <td>{{ board.likeCnt }}</td>
@@ -34,11 +36,11 @@
     <div class="pageNation">
       <ul>
         <li><a href="">prev</a></li>
-        <li><a href="">1</a></li>
+        <li class="on"><a href="">1</a></li>
         <li><a href="">2</a></li>
         <li><a href="">3</a></li>
         <li><a href="">4</a></li>
-        <li class="on"><a href="">5</a></li>
+        <li><a href="">5</a></li>
         <li><a href="">next</a></li>
       </ul>
     </div>

@@ -5,7 +5,9 @@
 .content_tableArea { margin-top: 50px;}
 .content_tableArea table { width: 100%; border-collapse: collapse; }
 .content_mainTable th { background-color: lightgray; border-top: 1px solid black;}
-.content_tableArea td {text-align: center; border-bottom: 1px solid lightgray; cursor: pointer; }
+.content_tableArea td {text-align: center; border-bottom: 1px solid lightgray; }
+.content_tableArea td a { text-decoration: none; color: #000; }
+.content_tableArea td a:hover { text-decoration: underline; }
 .content_tableArea tr { height: 35px; }
 
 .content_tableArea02 table { width: 100%; border-collapse: collapse; }
@@ -13,9 +15,9 @@
 .pageNation { margin-top:20px; text-align:center;}
 .pageNation ul { display:inline-block;}
 .pageNation ul li { float:left;}
-.pageNation ul li a { display:inline-block; width:40px; height:40px; line-height:40px; border-radius: 5px; font-size: 16px; box-sizing: border-box;}
+.pageNation ul li a { color: black; display:inline-block; width:40px; height:40px; line-height:40px; border-radius: 5px; font-size: 16px; box-sizing: border-box; text-decoration: none;}
 .pageNation ul li.on a,
-.pageNation ul li a:hover { border:1px solid #555; color: #000; font-weight: bold; text-decoration: none;}
+.pageNation ul li a:hover { color: #000; font-weight: bold; text-decoration: underline;}
 .pageNation ul li.prev a { margin-right: 5px; }
 .pageNation ul li.next a { margin-left:5px; }
 
