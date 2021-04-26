@@ -1,10 +1,11 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic" @click="addPost">글쓰기</button>
+      <button class="btn_basic">작성</button>
+      <button class="btn_basic" @click="goMain">취소</button>
     </div>
     <div class="title_center">
-      <span>Main</span>
+      <span @click="goMain">Main</span>
     </div>
     <div class="title_rightNav">
       <ul>
@@ -33,11 +34,11 @@ export default {
       this.logout();
       this.$router.push("/login");
     },
-    addPost() {
-      this.$router.push("/post/add");
+    goMain() {
+      this.$router.push("/main");
     }
   }
 };
 </script>
 
-<style scoped src="../../assets/css/board/mainHeader.css"></style>
+<style scoped src="../../assets/css/post/header.css"></style>

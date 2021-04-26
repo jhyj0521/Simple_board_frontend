@@ -24,6 +24,12 @@ const routes = [
     name: "Main",
     component: () => import("@/views/Main.vue"),
     meta: { auth: true }
+  },
+  {
+    path: "/post/add",
+    name: "add",
+    component: () => import("@/views/Post.vue"),
+    meta: { auth: true }
   }
 ];
 

@@ -1,4 +1,4 @@
-.content_mainBox { position: relative; margin: 0 auto; margin-top: 30px; padding: 30px; width: 85%; min-height:500px; background-color: #fff; }
+.content_mainBox { position: relative; margin: 0 auto; margin-top: 30px; padding: 30px; width: 85%; min-height:600px; background-color: #fff; }
 .content_search { text-align: center; }
 .content_search input { width: 40%; height: 30px; padding-left: 5px; }
 
@@ -10,24 +10,13 @@
 .content_tableArea td a:hover { text-decoration: underline; }
 .content_tableArea tr { height: 35px; }
 
-.content_tableArea02 table { width: 100%; border-collapse: collapse; }
 /*page nation*/
 .pageNation { margin-top:20px; text-align:center;}
 .pageNation ul { display:inline-block;}
 .pageNation ul li { float:left;}
 .pageNation ul li a { color: black; display:inline-block; width:40px; height:40px; line-height:40px; border-radius: 5px; font-size: 16px; box-sizing: border-box; text-decoration: none;}
 .pageNation ul li.on a,
-.pageNation ul li a:hover { color: #000; font-weight: bold; text-decoration: underline;}
+.pageNation ul li a:hover { color: #000; font-weight: bold; text-decoration: underline; }
 .pageNation ul li.prev a { margin-right: 5px; }
 .pageNation ul li.next a { margin-left:5px; }
-
-.pageNation ul li.off a { display: none;}
-
-.content_mainCont { margin-top: 20px; min-height: 200px; height: 200px; width: 100%; overflow-y: auto; border: 1px solid red; }
-
-.content_reply { margin-top: 20px; border: 1px solid red; }
-.content_mainTable02 input { width: 95%; min-height: 30px; overflow-y: auto; align-items: flex-start;}
-.table_reply input { width: 95%; min-height: 100px; overflow-y: auto; align-items: flex-start;}
-
-.content_mainTable02 { width: 100%; }
-.content_mainCont textarea { width: 100%; min-height: 300px;}
+.pageNation ul li.off a { display: none; }
