@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { member } from "./member-module";
-import { board } from "./board-module";
+import { member } from "./module/member";
+import { board } from "./module/board";
 
 Vue.use(Vuex);
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import memberService from "../api/member";
+import memberService from "@/api/member";
 import {
   getAuthFromCookie,
   getMemberNameFromCookie,
