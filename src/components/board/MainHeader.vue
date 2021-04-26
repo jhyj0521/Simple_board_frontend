@@ -9,7 +9,9 @@
     <div class="title_rightNav">
       <ul>
         <li><img class="rightNav_profile" /></li>
-        <li><span title="사용자정보">홍길동님, 환영합니다.</span></li>
+        <li>
+          <span title="사용자정보">{{ this.memberName }}님</span>
+        </li>
         <li><a href="" title="로그아웃">로그아웃</a></li>
       </ul>
     </div>
@@ -17,7 +19,15 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState({
+      memberName: state => state.member.memberName
+    })
+  }
+};
 </script>
 
 <style scoped src="../../assets/css/board/mainHeader.css"></style>

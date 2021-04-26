@@ -1,10 +1,16 @@
 /* eslint-disable no-unused-vars */
 import memberService from "../api/member";
-import { getAuthFromCookie } from "@/utils/cookies";
+import { getAuthFromCookie, getMemberNameFromCookie } from "@/utils/cookies";
 
 export const member = {
   state: {
-    token: getAuthFromCookie() || ""
+    token: getAuthFromCookie() || "",
+    memberName: getMemberNameFromCookie() || ""
+  },
+  getters: {
+    isLogin(state) {
+      return state.memberName !== "";
+    }
   },
   actions: {
     async register({ commit }, member) {
@@ -14,12 +20,16 @@ export const member = {
     async login({ commit }, member) {
       const result = await memberService.login(member);
       commit("setToken", getAuthFromCookie());
+      commit("setMemberName", getMemberNameFromCookie());
       return result;
     }
   },
   mutations: {
     setToken(state, token) {
       state.token = token;
+    },
+    setMemberName(state, memberName) {
+      state.memberName = memberName;
     }
   }
 };
