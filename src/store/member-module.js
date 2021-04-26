@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 import memberService from "../api/member";
-import { getAuthFromCookie, getMemberNameFromCookie } from "@/utils/cookies";
+import {
+  getAuthFromCookie,
+  getMemberNameFromCookie,
+  deleteCookie
+} from "@/utils/cookies";
 
 export const member = {
   state: {
@@ -30,6 +34,11 @@ export const member = {
     },
     setMemberName(state, memberName) {
       state.memberName = memberName;
+    },
+    logout(state) {
+      (state.token = ""), (state.memberName = "");
+      deleteCookie("jwt");
+      deleteCookie("memberName");
     }
   }
 };

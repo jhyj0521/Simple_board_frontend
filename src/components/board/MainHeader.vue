@@ -12,20 +12,27 @@
         <li>
           <span title="사용자정보">{{ this.memberName }}님</span>
         </li>
-        <li><a href="" title="로그아웃">로그아웃</a></li>
+        <li><button @click="logoutMethod">로그아웃</button></li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   computed: {
     ...mapState({
       memberName: state => state.member.memberName
     })
+  },
+  methods: {
+    ...mapMutations(["logout"]),
+    logoutMethod() {
+      this.logout();
+      this.$router.push("/login");
+    }
   }
 };
 </script>
