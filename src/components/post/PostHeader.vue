@@ -31,14 +31,24 @@ export default {
   methods: {
     ...mapMutations(["logout"]),
     logoutMethod() {
-      this.logout();
-      this.$router.push("/login");
+      const result = confirm(
+        "사이트에서 나가시겠습니까?\n변경사항이 저장되지 않을 수 있습니다."
+      );
+      if (result) {
+        this.logout();
+        this.$router.push("/login");
+      }
     },
     addPostMethod() {
       this.$emit("addPost");
     },
     goMain() {
-      this.$router.push("/main");
+      const result = confirm(
+        "사이트에서 나가시겠습니까?\n변경사항이 저장되지 않을 수 있습니다."
+      );
+      if (result) {
+        this.$router.push("/main");
+      }
     }
   }
 };

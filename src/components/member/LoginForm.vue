@@ -40,7 +40,7 @@ export default {
         };
         const result = await this.login(member);
         console.log(result);
-        this.$router.push("/main");
+        this.$router.replace("/main");
       } catch (error) {
         console.log(error.response);
         alert(error.response.data.message);
