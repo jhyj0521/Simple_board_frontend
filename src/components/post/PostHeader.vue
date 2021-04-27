@@ -1,7 +1,7 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic">작성</button>
+      <button class="btn_basic" @click="addPostMethod">작성</button>
       <button class="btn_basic" @click="goMain">취소</button>
     </div>
     <div class="title_center">
@@ -33,6 +33,9 @@ export default {
     logoutMethod() {
       this.logout();
       this.$router.push("/login");
+    },
+    addPostMethod() {
+      this.$emit("addPost");
     },
     goMain() {
       this.$router.push("/main");

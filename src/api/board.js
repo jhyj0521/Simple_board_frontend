@@ -4,4 +4,8 @@ const getBoardList = data => {
   return axiosServiceWithAuth.get("boards/lists", data);
 };
 
-export default { getBoardList };
+const addPost = data => {
+  return axiosServiceWithAuth.post("boards/new", data);
+};
+
+export default { getBoardList, addPost };

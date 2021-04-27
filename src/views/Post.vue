@@ -1,7 +1,7 @@
 <template>
   <div>
-    <PostHeader></PostHeader>
-    <PostForm></PostForm>
+    <PostHeader v-on:addPost="addPost"></PostHeader>
+    <PostForm ref="postForm"></PostForm>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   components: {
     PostHeader,
     PostForm
+  },
+  methods: {
+    addPost() {
+      this.$refs.postForm.addPostMethod();
+    }
   }
 };
 </script>

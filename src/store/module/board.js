@@ -6,6 +6,10 @@ export const board = {
     async getBoardList({ commit }, board) {
       const result = await boardService.getBoardList(board);
       return result.data.data;
+    },
+    async addPost({ commit }, post) {
+      const result = await boardService.addPost(post);
+      return result.data;
     }
   }
 };
