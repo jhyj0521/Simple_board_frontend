@@ -1,9 +1,19 @@
 <template>
   <div class="content_mainBox">
     <div class="content_search">
-      <input type="text" class="login_id" placeholder="검색어를 입력해주세요" />
-      <a class="searchBtn" title="search">search</a>
+      <input
+        type="text"
+        class="login_id"
+        placeholder="검색어를 입력해주세요"
+        v-model="searchWord"
+        @keyup.enter="getBoardListMethod"
+      />
+      <button class="searchBtn" title="search" @click="getBoardListMethod">
+        검색
+      </button>
     </div>
+
+    <div class="result_total">검색결과 {{ boardList.totalCnt }}건</div>
 
     <div class="content_tableArea">
       <table class="content_mainTable">
@@ -51,25 +61,49 @@ export default {
   data() {
     return {
       boardList: {},
-      currentPageNo: 1
+      currentPageNo: 1,
+      searchWord: ""
     };
   },
   methods: {
-    ...mapActions(["getBoardList"]),
+    ...mapActions(["getBoardList", "getBoardSearchList"]),
     async getBoardListMethod() {
       try {
         const param = {
-          currentPageNo: this.currentPageNo
+          searchWord: this.searchWord.trim(),
+          currentPageNo: 1
         };
-        this.boardList = await this.getBoardList(param);
-        console.log(this.boardList);
+
+        if (param.searchWord === "") {
+          this.boardList = await this.getBoardList(param);
+          console.log(this.boardList);
+        } else {
+          this.boardList = await this.getBoardSearchList(param);
+          console.log(this.boardList);
+        }
       } catch (error) {
         console.log(error.response);
       }
     },
-    changePage(pageNo) {
-      this.currentPageNo = pageNo;
-      this.getBoardListMethod();
+    async changePage(pageNo) {
+      try {
+        this.currentPageNo = pageNo;
+
+        const param = {
+          searchWord: this.searchWord,
+          currentPageNo: this.currentPageNo
+        };
+
+        if (param.searchWord === "") {
+          this.boardList = await this.getBoardList(param);
+          console.log(this.boardList);
+        } else {
+          this.boardList = await this.getBoardSearchList(param);
+          console.log(this.boardList);
+        }
+      } catch (error) {
+        console.log(error.response);
+      }
     }
   },
   created() {

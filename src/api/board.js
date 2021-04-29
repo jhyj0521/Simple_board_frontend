@@ -8,8 +8,17 @@ const getBoardList = data => {
   });
 };
 
+const getBoardSearchList = data => {
+  return axiosServiceWithAuth.get("boards/searchLists", {
+    params: {
+      searchWord: data.searchWord,
+      currentPageNo: data.currentPageNo
+    }
+  });
+};
+
 const addPost = data => {
   return axiosServiceWithAuth.post("boards/new", data);
 };
 
-export default { getBoardList, addPost };
+export default { getBoardList, getBoardSearchList, addPost };

@@ -3,8 +3,13 @@ import boardService from "@/api/board";
 
 export const board = {
   actions: {
-    async getBoardList({ commit }, board) {
-      const result = await boardService.getBoardList(board);
+    async getBoardList({ commit }, criteria) {
+      const result = await boardService.getBoardList(criteria);
+      return result.data.data;
+    },
+    async getBoardSearchList({ commit }, criteria) {
+      const result = await boardService.getBoardSearchList(criteria);
+      console.log(result.data.data);
       return result.data.data;
     },
     async addPost({ commit }, post) {
