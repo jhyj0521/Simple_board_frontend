@@ -12,3 +12,4 @@
 .content_tableArea tr { height: 35px; }
 
 .result_total { margin-top: 40px; font-size: 14px; color: rgb(151, 151, 151); }
+.no_result { font-size: 18px; color: rgb(151, 151, 151); text-align: center;line-height: 300px }

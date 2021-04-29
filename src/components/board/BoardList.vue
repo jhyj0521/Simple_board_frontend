@@ -42,6 +42,10 @@
         </tr>
       </table>
     </div>
+
+    <div class="no_result" v-if="boardList.totalCnt == 0">
+      검색 결과가 없습니다.
+    </div>
     <pagination
       @update="changePage"
       v-bind:currentPageNo="boardList.currentPageNo"
