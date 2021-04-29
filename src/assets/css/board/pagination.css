@@ -1,0 +1,10 @@
+/*pagination*/
+.pagiNation { margin-top:20px; text-align:center;}
+.pagiNation ul { display:inline-block;}
+.pagiNation ul li { float:left;}
+.pagiNation ul li a { color: black; display:inline-block; width:40px; height:40px; line-height:40px; border-radius: 5px; font-size: 16px; box-sizing: border-box; text-decoration: none; cursor: pointer;}
+.pagiNation ul li a.on,
+.pagiNation ul li a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.pagiNation ul li.prev a { margin-right: 5px; }
+.pagiNation ul li.next a { margin-left:5px; }
+.pagiNation ul li.off a { display: none; }

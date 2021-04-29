@@ -9,14 +9,3 @@
 .content_tableArea td a { text-decoration: none; color: #000; }
 .content_tableArea td a:hover { text-decoration: underline; }
 .content_tableArea tr { height: 35px; }
-
-/*page nation*/
-.pageNation { margin-top:20px; text-align:center;}
-.pageNation ul { display:inline-block;}
-.pageNation ul li { float:left;}
-.pageNation ul li a { color: black; display:inline-block; width:40px; height:40px; line-height:40px; border-radius: 5px; font-size: 16px; box-sizing: border-box; text-decoration: none;}
-.pageNation ul li.on a,
-.pageNation ul li a:hover { color: #000; font-weight: bold; text-decoration: underline; }
-.pageNation ul li.prev a { margin-right: 5px; }
-.pageNation ul li.next a { margin-left:5px; }
-.pageNation ul li.off a { display: none; }

@@ -21,7 +21,7 @@
           <th>작성일</th>
           <th>좋아요</th>
         </tr>
-        <tr v-for="(board, index) in boardList" v-bind:key="index">
+        <tr v-for="(board, index) in boardList.list" v-bind:key="index">
           <td>{{ board.boardNo }}</td>
           <td>
             <a href="">{{ board.title }}</a>
@@ -32,44 +32,51 @@
         </tr>
       </table>
     </div>
-
-    <div class="pageNation">
-      <ul>
-        <li><a href="">prev</a></li>
-        <li class="on"><a href="">1</a></li>
-        <li><a href="">2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
-        <li><a href="">5</a></li>
-        <li><a href="">next</a></li>
-      </ul>
-    </div>
+    <pagination
+      @update="changePage"
+      v-bind:currentPageNo="boardList.currentPageNo"
+      v-bind:totalCnt="boardList.totalCnt"
+      v-bind:recordsPerPage="boardList.recordsPerPage"
+      v-bind:pagePerLink="5"
+    >
+    </pagination>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import Pagination from "./Pagination";
 
 export default {
   data() {
     return {
-      boardList: {}
+      boardList: {},
+      currentPageNo: 1
     };
   },
   methods: {
     ...mapActions(["getBoardList"]),
     async getBoardListMethod() {
       try {
-        const result = await this.getBoardList();
-        this.boardList = result.list;
+        const param = {
+          currentPageNo: this.currentPageNo
+        };
+        this.boardList = await this.getBoardList(param);
         console.log(this.boardList);
       } catch (error) {
         console.log(error.response);
       }
+    },
+    changePage(pageNo) {
+      this.currentPageNo = pageNo;
+      this.getBoardListMethod();
     }
   },
   created() {
     this.getBoardListMethod();
+  },
+  components: {
+    Pagination
   }
 };
 </script>

@@ -1,7 +1,11 @@
 import { axiosServiceWithAuth } from "./index";
 
 const getBoardList = data => {
-  return axiosServiceWithAuth.get("boards/lists", data);
+  return axiosServiceWithAuth.get("boards/lists", {
+    params: {
+      currentPageNo: data.currentPageNo
+    }
+  });
 };
 
 const addPost = data => {
