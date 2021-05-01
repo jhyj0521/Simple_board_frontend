@@ -1,8 +1,8 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic" @click="addPostMethod">작성</button>
-      <button class="btn_basic" @click="routeMainPage">취소</button>
+      <button class="btn_basic">수정</button>
+      <button class="btn_basic">삭제</button>
     </div>
     <div class="title_center">
       <span @click="routeMainPage">Main</span>
@@ -31,24 +31,11 @@ export default {
   methods: {
     ...mapMutations(["logout"]),
     logoutMethod() {
-      const result = confirm(
-        "사이트에서 나가시겠습니까?\n변경사항이 저장되지 않을 수 있습니다."
-      );
-      if (result) {
-        this.logout();
-        this.$router.push("/login");
-      }
-    },
-    addPostMethod() {
-      this.$emit("addPost");
+      this.logout();
+      this.$router.push("/login");
     },
     routeMainPage() {
-      const result = confirm(
-        "사이트에서 나가시겠습니까?\n변경사항이 저장되지 않을 수 있습니다."
-      );
-      if (result) {
-        this.$router.push("/main");
-      }
+      this.$router.push("/main");
     }
   }
 };

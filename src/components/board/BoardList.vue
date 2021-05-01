@@ -34,7 +34,7 @@
         <tr v-for="(board, index) in boardList.list" v-bind:key="index">
           <td>{{ board.boardNo }}</td>
           <td>
-            <a href="">{{ board.title }}</a>
+            <a @click="routeDetailPage(board.boardNo)">{{ board.title }}</a>
           </td>
           <td>{{ board.memberName }}</td>
           <td>{{ board.regDate }}</td>
@@ -108,6 +108,9 @@ export default {
       } catch (error) {
         console.log(error.response);
       }
+    },
+    routeDetailPage(boardNo) {
+      this.$router.push(`/post/${boardNo}`);
     }
   },
   created() {
