@@ -17,8 +17,12 @@ const getBoardSearchList = data => {
   });
 };
 
+const getBoardDetail = boardNo => {
+  return axiosServiceWithAuth.get(`boards/${boardNo}`);
+};
+
 const addPost = data => {
   return axiosServiceWithAuth.post("boards/new", data);
 };
 
-export default { getBoardList, getBoardSearchList, addPost };
+export default { getBoardList, getBoardSearchList, getBoardDetail, addPost };

@@ -12,6 +12,10 @@ export const board = {
       console.log(result.data.data);
       return result.data.data;
     },
+    async getBoardDetail({ commit }, boardNo) {
+      const result = await boardService.getBoardDetail(boardNo);
+      return result.data.data.info;
+    },
     async addPost({ commit }, post) {
       const result = await boardService.addPost(post);
       return result.data;

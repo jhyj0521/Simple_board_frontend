@@ -32,7 +32,7 @@ const routes = [
     meta: { auth: true }
   },
   {
-    path: "/post/:id",
+    path: "/post/:boardNo",
     name: "detail",
     component: () => import("@/views/PostDetail.vue"),
     meta: { auth: true }
