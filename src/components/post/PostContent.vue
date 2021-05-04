@@ -31,56 +31,30 @@
     </div>
     <hr />
 
-    <div class="content_reply">
-      <div class="content_replyBefore">
-        <table class="content_mainTable02">
-          <colgroup>
-            <col style="width: 10%;" />
-            <col />
-            <col style="width: 10%;" />
-          </colgroup>
-          <tr>
-            <td><!--이미지--></td>
-            <td><input type="text" class="reply" /></td>
-            <td><button class="btn_basic">댓글 입력</button></td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="content_replyAfter">
-        <table class="content_mainTable02">
-          <colgroup>
-            <col style="width: 10%;" />
-            <col />
-            <col style="width: 10%;" />
-          </colgroup>
-          <tr>
-            <td><!--이미지--></td>
-            <td><!--입력된 내용--></td>
-            <td><button class="btn_basic">삭제</button></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <Comment></Comment>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
+import Comment from "./PostComment";
 
 export default {
   data() {
     return {
-      boardNo: this.$route.params.boardNo,
-      boardInfo: {}
+      boardNo: this.$route.params.boardNo
     };
+  },
+  computed: {
+    ...mapState({
+      boardInfo: state => state.board.boardInfo
+    })
   },
   methods: {
     ...mapActions(["getBoardDetail", "clickLike"]),
     async getBoardDetailMethod() {
       try {
-        this.boardInfo = await this.getBoardDetail(this.boardNo);
-        console.log(this.boardInfo);
+        await this.getBoardDetail(this.boardNo);
       } catch (error) {
         console.log(error.response);
       }
@@ -99,6 +73,9 @@ export default {
   },
   created() {
     this.getBoardDetailMethod();
+  },
+  components: {
+    Comment
   }
 };
 </script>

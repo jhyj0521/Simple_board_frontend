@@ -1,11 +1,11 @@
 .title_mainTop { position: relative; display: flex; flex-direction: row; align-items: flex-end; width: 100%; margin-top: 30px; } 
-.title_leftNav { width: 25%; text-align: center; }
-.title_center { width: 55%; text-align: center; }
+.title_leftNav { width: 30%; text-align: center; padding-left: 5%; }
+.title_center { width: 40%; text-align: center; }
 .title_center span { color: #fff; font-size: 60px; cursor: pointer; }
-.title_rightNav { width: 20%; }
+.title_rightNav { width: 30%; padding-left: 5%; }
 .title_rightNav li { float: left; list-style: none;}
 .title_rightNav li span { color: #fcfcfc; padding-right: 12px; }
 .title_rightNav li button { background-color: #a3a0a0; border: none; text-decoration: none; border-radius: 5px; }
 .title_rightNav li button:hover { background-color: rgb(124, 120, 120); }
 
-.btn_basic { min-width: 100px; min-height: 30px; margin: 5px; width: auto; border-radius: 10px; background-color: rgb(75 137 220); color: #fff; border: none; cursor: pointer; }
+.btn_basic { min-width: 80px; min-height: 30px; margin: 5px; width: auto; border-radius: 10px; background-color: rgb(75 137 220); color: #fff; border: none; cursor: pointer; }

@@ -1,2 +1,3 @@
 body { background-color: #4F5251; }
 li { list-style: none; }
+input,textarea:focus { outline: none; }

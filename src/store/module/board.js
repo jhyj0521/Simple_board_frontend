@@ -2,6 +2,9 @@
 import boardService from "@/api/board";
 
 export const board = {
+  state: {
+    boardInfo: {}
+  },
   actions: {
     async getBoardList({ commit }, criteria) {
       const result = await boardService.getBoardList(criteria);
@@ -14,7 +17,7 @@ export const board = {
     },
     async getBoardDetail({ commit }, boardNo) {
       const result = await boardService.getBoardDetail(boardNo);
-      return result.data.data.info;
+      commit("setBoardInfo", result.data.data.info);
     },
     async addPost({ commit }, post) {
       const result = await boardService.addPost(post);
@@ -23,6 +26,11 @@ export const board = {
     async clickLike({ commit }, boardNo) {
       const result = await boardService.clickLike(boardNo);
       return result.data;
+    }
+  },
+  mutations: {
+    setBoardInfo(state, info) {
+      state.boardInfo = info;
     }
   }
 };
