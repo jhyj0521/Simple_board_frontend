@@ -19,6 +19,10 @@ export const board = {
     async addPost({ commit }, post) {
       const result = await boardService.addPost(post);
       return result.data;
+    },
+    async clickLike({ commit }, boardNo) {
+      const result = await boardService.clickLike(boardNo);
+      return result.data;
     }
   }
 };

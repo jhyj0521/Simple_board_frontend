@@ -14,8 +14,19 @@
         {{ boardInfo.content }}
       </div>
       <div class="like">
-        <button>좋아요</button>
-        좋아요 {{ boardInfo.likeCnt }}
+        <i
+          class="far fa-heart heart"
+          v-if="boardInfo.likeYn == 'N'"
+          @click="clickLikeMethod"
+        >
+        </i>
+        <i
+          class="fas fa-heart heart"
+          v-if="boardInfo.likeYn == 'Y'"
+          @click="clickLikeMethod"
+        >
+        </i>
+        <span class="heart_cnt">좋아요 {{ boardInfo.likeCnt }}</span>
       </div>
     </div>
     <hr />
@@ -65,11 +76,22 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["getBoardDetail"]),
+    ...mapActions(["getBoardDetail", "clickLike"]),
     async getBoardDetailMethod() {
       try {
         this.boardInfo = await this.getBoardDetail(this.boardNo);
         console.log(this.boardInfo);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async clickLikeMethod() {
+      try {
+        const boardNo = {
+          boardNo: this.boardNo
+        };
+        await this.clickLike(boardNo);
+        await this.getBoardDetailMethod();
       } catch (error) {
         console.log(error.response);
       }

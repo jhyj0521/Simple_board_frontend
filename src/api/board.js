@@ -25,4 +25,14 @@ const addPost = data => {
   return axiosServiceWithAuth.post("boards/new", data);
 };
 
-export default { getBoardList, getBoardSearchList, getBoardDetail, addPost };
+const clickLike = data => {
+  return axiosServiceWithAuth.post("likes/update", data);
+};
+
+export default {
+  getBoardList,
+  getBoardSearchList,
+  getBoardDetail,
+  addPost,
+  clickLike
+};

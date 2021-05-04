@@ -8,10 +8,12 @@
 
 .content_mainCont { margin-top: 30px; margin-left: 10px; min-height: 300px; position: relative; }
 .content_mainCont .like { position: absolute; bottom: 0; right: 0; }
+.content_mainCont .like .heart { color: rgb(228, 58, 58); font-size: 20px; cursor: pointer; }
+.content_mainCont .like .heart_cnt { font-size: 16px; margin-left: 5px; }
 
 .content_mainTable02 { width: 100%; }
 .content_mainTable02 input { width: 95%; min-height: 30px; overflow-y: auto; align-items: flex-start; font-size: 16px; padding: 5px;}
 
-.content_reply { margin-top: 20px; border: 1px solid red; }
+.content_reply { margin-top: 20px; border: 1px solid rgb(235, 37, 37); }
 
 .btn_basic { min-width: 100px; min-height: 30px; margin: 5px; width: auto; border-radius: 10px; background-color: rgb(75 137 220); color: #fff; border: none; cursor: pointer; }
