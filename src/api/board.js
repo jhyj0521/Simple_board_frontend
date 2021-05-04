@@ -29,10 +29,15 @@ const clickLike = data => {
   return axiosServiceWithAuth.post("likes/update", data);
 };
 
+const addComment = data => {
+  return axiosServiceWithAuth.post("comments/new", data);
+};
+
 export default {
   getBoardList,
   getBoardSearchList,
   getBoardDetail,
   addPost,
-  clickLike
+  clickLike,
+  addComment
 };

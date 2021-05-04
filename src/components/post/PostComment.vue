@@ -18,10 +18,11 @@
             <textarea
               placeholder="댓글을 남겨보세요"
               class="comment_input_text"
+              v-model="content"
             />
           </td>
           <td>
-            <button class="btn_basic">등록</button>
+            <button class="btn_basic" @click="addCommentMethod">등록</button>
           </td>
         </tr>
       </table>
@@ -45,14 +46,37 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+      boardNo: this.$route.params.boardNo,
+      content: ""
+    };
+  },
   computed: {
     ...mapState({
       boardInfo: state => state.board.boardInfo,
       memberName: state => state.member.memberName
     })
+  },
+  methods: {
+    ...mapActions(["addComment"]),
+    async addCommentMethod() {
+      try {
+        const param = {
+          boardNo: this.boardNo,
+          content: this.content
+        };
+
+        const result = await this.addComment(param);
+        console.log(result);
+      } catch (error) {
+        console.log(error.response);
+        alert(error.response.data.message);
+      }
+    }
   }
 };
 </script>

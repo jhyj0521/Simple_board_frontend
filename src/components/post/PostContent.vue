@@ -65,7 +65,6 @@ export default {
           boardNo: this.boardNo
         };
         await this.clickLike(boardNo);
-        await this.getBoardDetailMethod();
       } catch (error) {
         console.log(error.response);
       }

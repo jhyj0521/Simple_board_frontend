@@ -23,9 +23,13 @@ export const board = {
       const result = await boardService.addPost(post);
       return result.data;
     },
-    async clickLike({ commit }, boardNo) {
-      const result = await boardService.clickLike(boardNo);
-      return result.data;
+    async clickLike({ commit, dispatch }, boardNo) {
+      await boardService.clickLike(boardNo);
+      dispatch("getBoardDetail", boardNo.boardNo);
+    },
+    async addComment({ commit }, data) {
+      const result = await boardService.addComment(data);
+      return result.data.data;
     }
   },
   mutations: {
