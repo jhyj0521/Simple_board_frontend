@@ -13,3 +13,4 @@
 
 .result_total { margin-top: 40px; font-size: 14px; color: rgb(151, 151, 151); }
 .no_result { font-size: 18px; color: rgb(151, 151, 151); text-align: center;line-height: 300px }
+.comment_cnt { color: rgb(240, 34, 34); font-weight: 600; }

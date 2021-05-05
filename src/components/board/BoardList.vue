@@ -35,6 +35,9 @@
           <td>{{ board.boardNo }}</td>
           <td>
             <a @click="routeDetailPage(board.boardNo)">{{ board.title }}</a>
+            <span class="comment_cnt" v-if="board.commentCnt != 0">
+              [{{ board.commentCnt }}]
+            </span>
           </td>
           <td>{{ board.memberName }}</td>
           <td>{{ board.regDate }}</td>
