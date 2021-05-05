@@ -6,6 +6,37 @@
       <span class="comment_cnt">{{ boardInfo.commentCnt }}</span>
     </div>
 
+    <div
+      class="comment_list"
+      v-for="(list, index) in commentList"
+      v-bind:key="index"
+    >
+      <table class="content_mainTable02">
+        <colgroup>
+          <col style="width: 2%;" />
+          <col />
+          <col style="width: 12%;" />
+        </colgroup>
+        <tr>
+          <td></td>
+          <td>
+            <div class="comment_list_name">
+              {{ list.memberName }}
+            </div>
+            <div class="comment_list_content">
+              {{ list.content }}
+            </div>
+            <div class="comment_list_date">
+              {{ list.regDate }}
+            </div>
+          </td>
+          <td><button class="btn_basic">삭제</button></td>
+        </tr>
+      </table>
+
+      <hr v-if="index != commentList.length - 1" />
+    </div>
+
     <div class="comment_input">
       <div class="comment_input_name">{{ memberName }}</div>
       <table class="content_mainTable02">
@@ -27,21 +58,6 @@
         </tr>
       </table>
     </div>
-
-    <div class="content_commentAfter">
-      <table class="content_mainTable02">
-        <colgroup>
-          <col style="width: 10%;" />
-          <col />
-          <col style="width: 10%;" />
-        </colgroup>
-        <tr>
-          <td><!--이미지--></td>
-          <td><!--입력된 내용--></td>
-          <td><button class="btn_basic">삭제</button></td>
-        </tr>
-      </table>
-    </div>
   </div>
 </template>
 
@@ -52,7 +68,8 @@ export default {
   data() {
     return {
       boardNo: this.$route.params.boardNo,
-      content: ""
+      content: "",
+      commentList: []
     };
   },
   computed: {
@@ -62,7 +79,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["addComment"]),
+    ...mapActions(["addComment", "getCommentList"]),
     async addCommentMethod() {
       try {
         const param = {
@@ -70,13 +87,28 @@ export default {
           content: this.content
         };
 
-        const result = await this.addComment(param);
-        console.log(result);
+        await this.addComment(param);
+        await this.getCommentListMethod();
       } catch (error) {
         console.log(error.response);
         alert(error.response.data.message);
       }
+    },
+    async getCommentListMethod() {
+      try {
+        const param = {
+          boardNo: this.boardNo
+        };
+
+        this.commentList = await this.getCommentList(param);
+        console.log(this.commentList);
+      } catch (error) {
+        console.log(error.response);
+      }
     }
+  },
+  created() {
+    this.getCommentListMethod();
   }
 };
 </script>

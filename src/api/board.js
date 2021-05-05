@@ -33,11 +33,20 @@ const addComment = data => {
   return axiosServiceWithAuth.post("comments/new", data);
 };
 
+const getCommentList = data => {
+  return axiosServiceWithAuth.get("comments/lists", {
+    params: {
+      boardNo: data.boardNo
+    }
+  });
+};
+
 export default {
   getBoardList,
   getBoardSearchList,
   getBoardDetail,
   addPost,
   clickLike,
-  addComment
+  addComment,
+  getCommentList
 };

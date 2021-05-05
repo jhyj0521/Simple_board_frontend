@@ -1,4 +1,4 @@
-.content_mainBox { position: relative; margin: 0 auto; margin-top: 30px; padding: 30px; width: 70%; min-height:600px; background-color: #fff; border-radius: 5px; }
+.content_mainBox { position: relative; margin: 0 auto; margin-top: 30px; margin-bottom: 80px; padding: 30px; width: 70%; min-height:600px; background-color: #fff; border-radius: 5px; }
 
 .info_area { width: 100%; }
 .info_area span.title { font-size: 30px; margin-left: 2px; }

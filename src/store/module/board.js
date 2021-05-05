@@ -30,6 +30,10 @@ export const board = {
     async addComment({ commit }, data) {
       const result = await boardService.addComment(data);
       return result.data.data;
+    },
+    async getCommentList({ commit }, data) {
+      const result = await boardService.getCommentList(data);
+      return result.data.data.list;
     }
   },
   mutations: {
