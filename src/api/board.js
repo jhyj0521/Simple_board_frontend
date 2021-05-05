@@ -33,10 +33,15 @@ const addComment = data => {
   return axiosServiceWithAuth.post("comments/new", data);
 };
 
+const deleteComment = commentNo => {
+  return axiosServiceWithAuth.post(`comments/${commentNo}/delete`);
+};
+
 const getCommentList = data => {
   return axiosServiceWithAuth.get("comments/lists", {
     params: {
-      boardNo: data.boardNo
+      boardNo: data.boardNo,
+      recordsPerPage: data.recordsPerPage
     }
   });
 };
@@ -48,5 +53,6 @@ export default {
   addPost,
   clickLike,
   addComment,
+  deleteComment,
   getCommentList
 };

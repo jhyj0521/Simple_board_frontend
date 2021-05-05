@@ -3,7 +3,8 @@ import boardService from "@/api/board";
 
 export const board = {
   state: {
-    boardInfo: {}
+    boardInfo: {},
+    commentList: []
   },
   actions: {
     async getBoardList({ commit }, criteria) {
@@ -15,9 +16,13 @@ export const board = {
       console.log(result.data.data);
       return result.data.data;
     },
-    async getBoardDetail({ commit }, boardNo) {
+    async getBoardDetail({ commit, dispatch }, boardNo) {
       const result = await boardService.getBoardDetail(boardNo);
       commit("setBoardInfo", result.data.data.info);
+      dispatch("getCommentList", {
+        boardNo: boardNo,
+        recordsPerPage: 100
+      });
     },
     async addPost({ commit }, post) {
       const result = await boardService.addPost(post);
@@ -27,18 +32,25 @@ export const board = {
       await boardService.clickLike(boardNo);
       dispatch("getBoardDetail", boardNo.boardNo);
     },
-    async addComment({ commit }, data) {
-      const result = await boardService.addComment(data);
-      return result.data.data;
+    async addComment({ commit, dispatch }, data) {
+      await boardService.addComment(data);
+      dispatch("getBoardDetail", data.boardNo);
+    },
+    async deleteComment({ commit, dispatch }, data) {
+      await boardService.deleteComment(data.commentNo);
+      dispatch("getBoardDetail", data.boardNo);
     },
     async getCommentList({ commit }, data) {
       const result = await boardService.getCommentList(data);
-      return result.data.data.list;
+      commit("setCommentList", result.data.data.list);
     }
   },
   mutations: {
     setBoardInfo(state, info) {
       state.boardInfo = info;
+    },
+    setCommentList(state, list) {
+      state.commentList = list;
     }
   }
 };

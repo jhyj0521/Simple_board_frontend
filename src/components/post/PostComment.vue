@@ -30,7 +30,14 @@
               {{ list.regDate }}
             </div>
           </td>
-          <td><button class="btn_basic">삭제</button></td>
+          <td>
+            <button
+              class="btn_basic"
+              @click="deleteCommentMethod(list.commentNo)"
+            >
+              삭제
+            </button>
+          </td>
         </tr>
       </table>
 
@@ -68,18 +75,18 @@ export default {
   data() {
     return {
       boardNo: this.$route.params.boardNo,
-      content: "",
-      commentList: []
+      content: ""
     };
   },
   computed: {
     ...mapState({
       boardInfo: state => state.board.boardInfo,
+      commentList: state => state.board.commentList,
       memberName: state => state.member.memberName
     })
   },
   methods: {
-    ...mapActions(["addComment", "getCommentList"]),
+    ...mapActions(["addComment", "getCommentList", "deleteComment"]),
     async addCommentMethod() {
       try {
         const param = {
@@ -88,7 +95,7 @@ export default {
         };
 
         await this.addComment(param);
-        await this.getCommentListMethod();
+        this.afterAddComment();
       } catch (error) {
         console.log(error.response);
         alert(error.response.data.message);
@@ -97,18 +104,34 @@ export default {
     async getCommentListMethod() {
       try {
         const param = {
-          boardNo: this.boardNo
+          boardNo: this.boardNo,
+          recordsPerPage: 100
         };
 
-        this.commentList = await this.getCommentList(param);
-        console.log(this.commentList);
+        await this.getCommentList(param);
       } catch (error) {
         console.log(error.response);
       }
+    },
+    async deleteCommentMethod(commentNo) {
+      try {
+        if (!confirm("댓글을 삭제하시겠습니까?")) {
+          return;
+        }
+
+        const param = {
+          commentNo: commentNo,
+          boardNo: this.boardNo
+        };
+
+        await this.deleteComment(param);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    afterAddComment() {
+      this.content = "";
     }
-  },
-  created() {
-    this.getCommentListMethod();
   }
 };
 </script>
