@@ -9,7 +9,8 @@ import {
 export const member = {
   state: {
     token: getAuthFromCookie() || "",
-    memberName: getMemberNameFromCookie() || ""
+    memberName: getMemberNameFromCookie() || "",
+    memberNo: ""
   },
   getters: {
     isLogin(state) {
@@ -26,6 +27,10 @@ export const member = {
       commit("setToken", getAuthFromCookie());
       commit("setMemberName", getMemberNameFromCookie());
       return result;
+    },
+    async getJwtInfo({ commit }) {
+      const result = await memberService.getJwtInfo();
+      commit("setMemberNo", result.data.data.memberNo);
     }
   },
   mutations: {
@@ -34,6 +39,9 @@ export const member = {
     },
     setMemberName(state, memberName) {
       state.memberName = memberName;
+    },
+    setMemberNo(state, memberNo) {
+      state.memberNo = memberNo;
     },
     logout(state) {
       (state.token = ""), (state.memberName = "");

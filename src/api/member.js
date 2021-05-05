@@ -1,4 +1,4 @@
-import { axiosService } from "./index";
+import { axiosService, axiosServiceWithAuth } from "./index";
 
 const register = data => {
   return axiosService.post("members/new", data);
@@ -8,4 +8,8 @@ const login = data => {
   return axiosService.post("members/login", data, { withCredentials: true });
 };
 
-export default { register, login };
+const getJwtInfo = () => {
+  return axiosServiceWithAuth.post("jwt");
+};
+
+export default { register, login, getJwtInfo };

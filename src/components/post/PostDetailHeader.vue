@@ -1,8 +1,12 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic">수정</button>
-      <button class="btn_basic">삭제</button>
+      <button class="btn_basic" v-if="memberNo === boardInfo.memberNo">
+        수정
+      </button>
+      <button class="btn_basic" v-if="memberNo === boardInfo.memberNo">
+        삭제
+      </button>
     </div>
     <div class="title_center">
       <span @click="routeMainPage">Main</span>
@@ -25,7 +29,9 @@ import { mapState, mapMutations } from "vuex";
 export default {
   computed: {
     ...mapState({
-      memberName: state => state.member.memberName
+      memberName: state => state.member.memberName,
+      memberNo: state => state.member.memberNo,
+      boardInfo: state => state.board.boardInfo
     })
   },
   methods: {

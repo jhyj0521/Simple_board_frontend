@@ -22,6 +22,9 @@
           <td>
             <div class="comment_list_name">
               {{ list.memberName }}
+              <span class="writer" v-if="boardInfo.memberNo === list.memberNo">
+                작성자
+              </span>
             </div>
             <div class="comment_list_content">
               {{ list.content }}
@@ -34,6 +37,7 @@
             <button
               class="btn_basic"
               @click="deleteCommentMethod(list.commentNo)"
+              v-if="memberNo === list.memberNo"
             >
               삭제
             </button>
@@ -82,7 +86,8 @@ export default {
     ...mapState({
       boardInfo: state => state.board.boardInfo,
       commentList: state => state.board.commentList,
-      memberName: state => state.member.memberName
+      memberName: state => state.member.memberName,
+      memberNo: state => state.member.memberNo
     })
   },
   methods: {

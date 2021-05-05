@@ -51,7 +51,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["getBoardDetail", "clickLike"]),
+    ...mapActions(["getBoardDetail", "clickLike", "getJwtInfo"]),
     async getBoardDetailMethod() {
       try {
         await this.getBoardDetail(this.boardNo);
@@ -72,6 +72,7 @@ export default {
   },
   created() {
     this.getBoardDetailMethod();
+    this.getJwtInfo();
   },
   components: {
     Comment
