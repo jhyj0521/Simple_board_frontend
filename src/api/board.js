@@ -25,6 +25,14 @@ const addPost = data => {
   return axiosServiceWithAuth.post("boards/new", data);
 };
 
+const editPost = data => {
+  return axiosServiceWithAuth.post("boards/new", data);
+};
+
+const deletePost = boardNo => {
+  return axiosServiceWithAuth.post(`boards/${boardNo}/delete`, boardNo);
+};
+
 const clickLike = data => {
   return axiosServiceWithAuth.post("likes/update", data);
 };
@@ -51,6 +59,8 @@ export default {
   getBoardSearchList,
   getBoardDetail,
   addPost,
+  editPost,
+  deletePost,
   clickLike,
   addComment,
   deleteComment,

@@ -3,7 +3,7 @@
     <div class="content_tableArea02">
       <table class="content_mainTable02">
         <colgroup>
-          <col style="width: 5%;" />
+          <col style="width: 8%;" />
           <col />
         </colgroup>
         <tr>

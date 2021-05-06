@@ -1,7 +1,7 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic" @click="addPostMethod">작성</button>
+      <button class="btn_basic" @click="addPostMethod">등록</button>
       <button class="btn_basic" @click="routeMainPage">취소</button>
     </div>
     <div class="title_center">

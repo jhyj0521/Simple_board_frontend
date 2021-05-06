@@ -28,6 +28,13 @@ export const board = {
       const result = await boardService.addPost(post);
       return result.data;
     },
+    async editPost({ commit }) {
+      const result = await boardService.editPost();
+    },
+    async deletePost({ commit }, boardNo) {
+      const result = await boardService.deletePost(boardNo);
+      console.log(result);
+    },
     async clickLike({ commit, dispatch }, boardNo) {
       await boardService.clickLike(boardNo);
       dispatch("getBoardDetail", boardNo.boardNo);

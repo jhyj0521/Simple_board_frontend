@@ -1,10 +1,18 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic" v-if="memberNo === boardInfo.memberNo">
+      <button
+        class="btn_basic"
+        v-if="memberNo === boardInfo.memberNo"
+        @click="editPostMethod"
+      >
         수정
       </button>
-      <button class="btn_basic" v-if="memberNo === boardInfo.memberNo">
+      <button
+        class="btn_basic"
+        v-if="memberNo === boardInfo.memberNo"
+        @click="deletePostMethod"
+      >
         삭제
       </button>
     </div>
@@ -24,9 +32,14 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
+  data() {
+    return {
+      boardNo: this.$route.params.boardNo
+    };
+  },
   computed: {
     ...mapState({
       memberName: state => state.member.memberName,
@@ -35,7 +48,27 @@ export default {
     })
   },
   methods: {
+    ...mapActions(["editPost", "deletePost"]),
     ...mapMutations(["logout"]),
+    async editPostMethod() {
+      try {
+        await this.editPost();
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async deletePostMethod() {
+      try {
+        if (!confirm("게시글을 삭제하시겠습니까?")) {
+          return;
+        }
+
+        await this.deletePost(this.boardNo);
+        this.$router.replace("/main");
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     logoutMethod() {
       this.logout();
       this.$router.push("/login");
