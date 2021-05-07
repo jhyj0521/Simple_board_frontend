@@ -36,6 +36,12 @@ const routes = [
     name: "detail",
     component: () => import("@/views/PostDetail.vue"),
     meta: { auth: true }
+  },
+  {
+    path: "/post/:boardNo/edit",
+    name: "edit",
+    component: () => import("@/views/PostEdit.vue"),
+    meta: { auth: true }
   }
 ];
 

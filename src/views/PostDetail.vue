@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import PostDetailHeader from "@/components/post/PostDetailHeader.vue";
-import PostContent from "@/components/post/PostContent.vue";
+import PostDetailHeader from "@/components/post/detail/PostDetailHeader.vue";
+import PostContent from "@/components/post/detail/PostContent.vue";
 export default {
   components: {
     PostDetailHeader,

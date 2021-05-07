@@ -141,4 +141,4 @@ export default {
 };
 </script>
 
-<style scoped src="../../assets/css/post/comment.css"></style>
+<style scoped src="@/assets/css/post/comment.css"></style>

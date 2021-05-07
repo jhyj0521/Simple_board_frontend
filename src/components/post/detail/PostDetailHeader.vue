@@ -80,4 +80,4 @@ export default {
 };
 </script>
 
-<style scoped src="../../assets/css/post/header.css"></style>
+<style scoped src="@/assets/css/post/header.css"></style>
