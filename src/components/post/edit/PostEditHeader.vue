@@ -1,8 +1,8 @@
 <template>
   <div class="title_mainTop">
     <div class="title_leftNav">
-      <button class="btn_basic" @click="addPostMethod">등록</button>
-      <button class="btn_basic" @click="routeMainPage">취소</button>
+      <button class="btn_basic" @click="editPostMethod">등록</button>
+      <button class="btn_basic" @click="routePostDetailPage">취소</button>
     </div>
     <div class="title_center">
       <span @click="routeMainPage">Main</span>
@@ -23,6 +23,11 @@
 import { mapState, mapMutations } from "vuex";
 
 export default {
+  data() {
+    return {
+      boardNo: this.$route.params.boardNo
+    };
+  },
   computed: {
     ...mapState({
       memberName: state => state.member.memberName
@@ -39,8 +44,8 @@ export default {
         this.$router.push("/login");
       }
     },
-    addPostMethod() {
-      this.$emit("addPost");
+    editPostMethod() {
+      this.$emit("editPost");
     },
     routeMainPage() {
       const result = confirm(
@@ -48,6 +53,14 @@ export default {
       );
       if (result) {
         this.$router.push("/main");
+      }
+    },
+    routePostDetailPage() {
+      const result = confirm(
+        "사이트에서 나가시겠습니까?\n변경사항이 저장되지 않을 수 있습니다."
+      );
+      if (result) {
+        this.$router.push(`/post/${this.boardNo}`);
       }
     }
   }

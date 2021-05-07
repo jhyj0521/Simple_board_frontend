@@ -1,7 +1,7 @@
 <template>
   <div>
-    <PostEditHeader></PostEditHeader>
-    <PostEditForm></PostEditForm>
+    <PostEditHeader v-on:editPost="editPost"></PostEditHeader>
+    <PostEditForm ref="PostEditForm"></PostEditForm>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   components: {
     PostEditHeader,
     PostEditForm
+  },
+  methods: {
+    editPost() {
+      this.$refs.PostEditForm.editPostMethod();
+    }
   }
 };
 </script>

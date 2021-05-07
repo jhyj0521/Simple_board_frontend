@@ -4,7 +4,7 @@
       <button
         class="btn_basic"
         v-if="memberNo === boardInfo.memberNo"
-        @click="editPostMethod"
+        @click="routeEditPage"
       >
         수정
       </button>
@@ -68,6 +68,9 @@ export default {
       } catch (error) {
         console.log(error.response);
       }
+    },
+    routeEditPage() {
+      this.$router.push(`/post/${this.boardNo}/edit`);
     },
     logoutMethod() {
       this.logout();

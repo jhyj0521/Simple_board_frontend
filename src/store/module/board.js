@@ -28,8 +28,8 @@ export const board = {
       const result = await boardService.addPost(post);
       return result.data;
     },
-    async editPost({ commit }) {
-      const result = await boardService.editPost();
+    async editPost({ commit }, post) {
+      await boardService.editPost(post);
     },
     async deletePost({ commit }, boardNo) {
       const result = await boardService.deletePost(boardNo);

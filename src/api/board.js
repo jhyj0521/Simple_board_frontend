@@ -26,7 +26,7 @@ const addPost = data => {
 };
 
 const editPost = data => {
-  return axiosServiceWithAuth.post("boards/new", data);
+  return axiosServiceWithAuth.post(`boards/${data.boardNo}/edit`, data);
 };
 
 const deletePost = boardNo => {

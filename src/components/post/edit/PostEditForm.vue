@@ -26,31 +26,50 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   data() {
     return {
+      boardNo: this.$route.params.boardNo,
       title: "",
       content: ""
     };
   },
+  computed: {
+    ...mapState({
+      boardInfo: state => state.board.boardInfo
+    })
+  },
   methods: {
-    ...mapActions(["addPost"]),
-    async addPostMethod() {
+    ...mapActions(["getBoardDetail", "editPost"]),
+    async getBoardDetailMethod() {
+      try {
+        await this.getBoardDetail(this.boardNo);
+        this.title = this.boardInfo.title;
+        this.content = this.boardInfo.content;
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async editPostMethod() {
       try {
         const post = {
+          boardNo: this.boardNo,
           title: this.title,
           content: this.content
         };
-        const result = await this.addPost(post);
-        console.log(result);
-        this.$router.push("/main");
+
+        await this.editPost(post);
+        this.$router.push(`/post/${this.boardNo}`);
       } catch (error) {
         console.log(error.response);
         alert(error.response.data.message);
       }
     }
+  },
+  created() {
+    this.getBoardDetailMethod();
   }
 };
 </script>
