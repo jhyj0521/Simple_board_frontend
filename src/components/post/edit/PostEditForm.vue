@@ -47,7 +47,7 @@ export default {
       try {
         await this.getBoardDetail(this.boardNo);
         this.title = this.boardInfo.title;
-        this.content = this.boardInfo.content;
+        this.content = this.formatEditContent(this.boardInfo.content);
       } catch (error) {
         console.log(error.response);
       }
@@ -57,7 +57,7 @@ export default {
         const post = {
           boardNo: this.boardNo,
           title: this.title,
-          content: this.content
+          content: this.formatContent(this.content)
         };
 
         await this.editPost(post);
@@ -66,6 +66,14 @@ export default {
         console.log(error.response);
         alert(error.response.data.message);
       }
+    },
+    formatContent(str) {
+      str = str.replace(/\n/g, "<br/>");
+      return str.replace(/ /g, "&nbsp;&nbsp;");
+    },
+    formatEditContent(str) {
+      str = str.replace(/(<br\/>)/g, "\n");
+      return str.replace(/&nbsp;&nbsp;/g, " ");
     }
   },
   created() {

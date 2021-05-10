@@ -6,7 +6,7 @@
 .sub_info span.member_name { font-size: 17px; font-weight: bold; color: rgb(100, 98, 98); }
 .sub_info span.date { float: right; font-size: 16px; color: rgb(179, 177, 177); }
 
-.content_mainCont { margin-top: 30px; margin-left: 10px; min-height: 300px; position: relative; }
+.content_mainCont { margin-top: 15px; margin-left: 5px; min-height: 300px; position: relative; }
 .content_mainCont .like { position: absolute; bottom: 0; right: 0; }
 .content_mainCont .like .heart { color: rgb(228, 58, 58); font-size: 20px; cursor: pointer; }
 .content_mainCont .like .heart_cnt { font-size: 16px; margin-left: 5px; }

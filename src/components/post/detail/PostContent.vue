@@ -10,9 +10,7 @@
     <hr />
 
     <div class="content_mainCont">
-      <div class="content">
-        {{ boardInfo.content }}
-      </div>
+      <div class="content" v-html="boardInfo.content"></div>
       <div class="like">
         <i
           class="far fa-heart heart"
