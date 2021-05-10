@@ -28,7 +28,7 @@
             </div>
             <div class="comment_list_content" v-html="list.content"></div>
             <div class="comment_list_date">
-              {{ list.regDate }}
+              {{ list.regDate | formatDate }}
             </div>
           </td>
           <td>
@@ -87,6 +87,12 @@ export default {
       memberName: state => state.member.memberName,
       memberNo: state => state.member.memberNo
     })
+  },
+  filters: {
+    formatDate(regDate) {
+      const date = regDate;
+      return date.slice(0, 16);
+    }
   },
   methods: {
     ...mapActions(["addComment", "getCommentList", "deleteComment"]),

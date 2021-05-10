@@ -40,7 +40,7 @@
             </span>
           </td>
           <td>{{ board.memberName }}</td>
-          <td>{{ board.regDate }}</td>
+          <td>{{ board.regDate | formatDate }}</td>
           <td>{{ board.likeCnt }}</td>
         </tr>
       </table>
@@ -71,6 +71,34 @@ export default {
       currentPageNo: 1,
       searchWord: ""
     };
+  },
+  filters: {
+    formatDate(regDate) {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      const date = now.getDate();
+
+      const regYear = regDate.slice(0, 4);
+      let regMonth = "";
+      if (regDate.charAt(5) == 0) {
+        regMonth = regDate.charAt(6);
+      } else {
+        regMonth = regDate.slice(5, 7);
+      }
+      let regDay = "";
+      if (regDate.charAt(8) == 0) {
+        regDay = regDate.charAt(9);
+      } else {
+        regDay = regDate.slice(8, 10);
+      }
+
+      if (regYear == year && regMonth == month && regDay == date) {
+        return regDate.slice(10, 16);
+      } else {
+        return regDate.slice(0, 10);
+      }
+    }
   },
   methods: {
     ...mapActions(["getBoardList", "getBoardSearchList"]),
