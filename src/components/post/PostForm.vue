@@ -39,6 +39,16 @@ export default {
     ...mapActions(["addPost"]),
     async addPostMethod() {
       try {
+        if (this.title.length > 30) {
+          alert("제목을 30자 이내로 입력하세요.");
+          return;
+        }
+
+        if (this.content.length > 1000) {
+          alert("내용을 1000자 이내로 입력하세요.");
+          return;
+        }
+
         const post = {
           title: this.title,
           content: this.formatContent(this.content)

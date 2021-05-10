@@ -92,6 +92,11 @@ export default {
     ...mapActions(["addComment", "getCommentList", "deleteComment"]),
     async addCommentMethod() {
       try {
+        if (this.content.length > 100) {
+          alert("100자까지 작성할 수 있습니다.");
+          return;
+        }
+
         const param = {
           boardNo: this.boardNo,
           content: this.formatContent(this.content)
