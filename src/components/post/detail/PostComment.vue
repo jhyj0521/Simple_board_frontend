@@ -26,9 +26,7 @@
                 작성자
               </span>
             </div>
-            <div class="comment_list_content">
-              {{ list.content }}
-            </div>
+            <div class="comment_list_content" v-html="list.content"></div>
             <div class="comment_list_date">
               {{ list.regDate }}
             </div>
@@ -96,7 +94,7 @@ export default {
       try {
         const param = {
           boardNo: this.boardNo,
-          content: this.content
+          content: this.formatContent(this.content)
         };
 
         await this.addComment(param);
@@ -136,6 +134,10 @@ export default {
     },
     afterAddComment() {
       this.content = "";
+    },
+    formatContent(str) {
+      str = str.replace(/\n/g, "<br/>");
+      return str.replace(/ /g, "&nbsp;&nbsp;");
     }
   }
 };
