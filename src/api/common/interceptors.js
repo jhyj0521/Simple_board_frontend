@@ -1,5 +1,4 @@
 import store from "@/store/index";
-import { deleteCookie } from "@/utils/cookies";
 
 export function setInterceptors(axiosService) {
   axiosService.interceptors.request.use(
@@ -23,12 +22,6 @@ export function setInterceptors(axiosService) {
     },
     function(error) {
       // 응답이 에러인 경우 미리 처리할 수 있다.
-      if (error.response.status === 401) {
-        alert("접속이 종료 되었습니다. 다시 로그인 하세요.");
-        location.replace("/login");
-        deleteCookie("jwt");
-        deleteCookie("memberName");
-      }
       return Promise.reject(error);
     }
   );

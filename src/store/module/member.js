@@ -42,7 +42,6 @@ export const member = {
     logout(state) {
       state.token = "";
       deleteCookie("jwt");
-      deleteCookie("memberName");
     }
   }
 };

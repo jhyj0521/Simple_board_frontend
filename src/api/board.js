@@ -1,15 +1,15 @@
 import { axiosServiceWithAuth } from "./index";
 
-const getBoardList = data => {
-  return axiosServiceWithAuth.get("boards/lists", {
+const getBoardList = async data => {
+  return await axiosServiceWithAuth.get("boards/lists", {
     params: {
       currentPageNo: data.currentPageNo
     }
   });
 };
 
-const getBoardSearchList = data => {
-  return axiosServiceWithAuth.get("boards/searchLists", {
+const getBoardSearchList = async data => {
+  return await axiosServiceWithAuth.get("boards/searchLists", {
     params: {
       searchWord: data.searchWord,
       currentPageNo: data.currentPageNo
@@ -17,36 +17,36 @@ const getBoardSearchList = data => {
   });
 };
 
-const getBoardDetail = boardNo => {
-  return axiosServiceWithAuth.get(`boards/${boardNo}`);
+const getBoardDetail = async boardNo => {
+  return await axiosServiceWithAuth.get(`boards/${boardNo}`);
 };
 
-const addPost = data => {
-  return axiosServiceWithAuth.post("boards/new", data);
+const addPost = async data => {
+  return await axiosServiceWithAuth.post("boards/new", data);
 };
 
-const editPost = data => {
-  return axiosServiceWithAuth.post(`boards/${data.boardNo}/edit`, data);
+const editPost = async data => {
+  return await axiosServiceWithAuth.post(`boards/${data.boardNo}/edit`, data);
 };
 
-const deletePost = boardNo => {
-  return axiosServiceWithAuth.post(`boards/${boardNo}/delete`, boardNo);
+const deletePost = async boardNo => {
+  return await axiosServiceWithAuth.post(`boards/${boardNo}/delete`, boardNo);
 };
 
-const clickLike = data => {
-  return axiosServiceWithAuth.post("likes/update", data);
+const clickLike = async data => {
+  return await axiosServiceWithAuth.post("likes/update", data);
 };
 
-const addComment = data => {
-  return axiosServiceWithAuth.post("comments/new", data);
+const addComment = async data => {
+  return await axiosServiceWithAuth.post("comments/new", data);
 };
 
-const deleteComment = commentNo => {
-  return axiosServiceWithAuth.post(`comments/${commentNo}/delete`);
+const deleteComment = async commentNo => {
+  return await axiosServiceWithAuth.post(`comments/${commentNo}/delete`);
 };
 
-const getCommentList = data => {
-  return axiosServiceWithAuth.get("comments/lists", {
+const getCommentList = async data => {
+  return await axiosServiceWithAuth.get("comments/lists", {
     params: {
       boardNo: data.boardNo,
       recordsPerPage: data.recordsPerPage
