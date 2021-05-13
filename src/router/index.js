@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/login"
+    redirect: "/main"
   },
   {
     path: "/login",
@@ -53,7 +53,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.auth && !store.getters.isLogin) {
-    alert("로그인 페이지로 이동합니다.");
     next("/login");
     return;
   }
