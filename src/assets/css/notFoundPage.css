@@ -1,0 +1,5 @@
+.content_mainBox { position: relative; margin: 0 auto; margin-top: 150px; margin-bottom: 50px; padding: 30px; width: 60%; height:600px; background-color: #fff; border-radius: 5px; text-align: center; }
+
+.error_message { font-size: 24px; margin-top: 200px; margin-bottom: 20px; font-weight: bold;}
+
+.btn_basic { min-width: 120px; min-height: 40px; width: auto; border-radius: 10px; background-color: gray; color: #fff; border: none; cursor: pointer; text-align: center; font-size: 16px; }

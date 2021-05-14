@@ -42,6 +42,10 @@ const routes = [
     name: "edit",
     component: () => import("@/views/PostEdit.vue"),
     meta: { auth: true }
+  },
+  {
+    path: "*",
+    component: () => import("@/views/NotFoundPage.vue")
   }
 ];
 
