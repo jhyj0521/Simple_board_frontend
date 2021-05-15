@@ -15,8 +15,7 @@ export const member = {
   },
   actions: {
     async register({ commit }, member) {
-      const result = await memberService.register(member);
-      console.log(result);
+      await memberService.register(member);
     },
     async login({ commit }, member) {
       const result = await memberService.login(member);

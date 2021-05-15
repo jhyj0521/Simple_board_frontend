@@ -38,9 +38,14 @@ export default {
           memberId: this.memberId,
           password: this.password
         };
-        const result = await this.login(member);
-        console.log(result);
-        this.$router.replace("/main");
+        await this.login(member);
+        this.$router.replace({
+          path: "/main",
+          query: {
+            searchWord: "",
+            currentPageNo: 1
+          }
+        });
       } catch (error) {
         console.log(error.response);
         alert(error.response.data.message);

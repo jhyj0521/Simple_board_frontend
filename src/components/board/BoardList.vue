@@ -6,9 +6,9 @@
         class="login_id"
         placeholder="검색어를 입력해주세요"
         v-model="searchWord"
-        @keyup.enter="getBoardListMethod"
+        @keyup.enter="getSearchListMethod"
       />
-      <button class="searchBtn" title="search" @click="getBoardListMethod">
+      <button class="searchBtn" title="search" @click="getSearchListMethod">
         검색
       </button>
     </div>
@@ -105,16 +105,29 @@ export default {
     async getBoardListMethod() {
       try {
         const param = {
-          searchWord: this.searchWord.trim(),
-          currentPageNo: 1
+          searchWord: this.$route.query.searchWord,
+          currentPageNo: this.$route.query.currentPageNo
         };
 
         if (param.searchWord === "") {
           this.boardList = await this.getBoardList(param);
-          console.log(this.boardList);
         } else {
+          this.searchWord = this.$route.query.searchWord;
           this.boardList = await this.getBoardSearchList(param);
-          console.log(this.boardList);
+        }
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async getSearchListMethod() {
+      try {
+        const param = {
+          searchWord: this.searchWord,
+          currentPageNo: 1
+        };
+
+        if (this.searchWord.trim() !== this.$route.query.searchWord) {
+          this.$router.push({ path: "/main", query: param });
         }
       } catch (error) {
         console.log(error.response);
@@ -125,16 +138,25 @@ export default {
         this.currentPageNo = pageNo;
 
         const param = {
-          searchWord: this.searchWord,
+          searchWord: this.searchWord.trim(),
           currentPageNo: this.currentPageNo
         };
 
-        if (param.searchWord === "") {
-          this.boardList = await this.getBoardList(param);
-          console.log(this.boardList);
+        if (this.$route.query.currentPageNo != pageNo) {
+          this.$router.push({ path: "/main", query: param });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async changeList(query) {
+      try {
+        this.searchWord = query.searchWord;
+
+        if (query.searchWord === "") {
+          this.boardList = await this.getBoardList(query);
         } else {
-          this.boardList = await this.getBoardSearchList(param);
-          console.log(this.boardList);
+          this.boardList = await this.getBoardSearchList(query);
         }
       } catch (error) {
         console.log(error.response);
@@ -146,6 +168,11 @@ export default {
   },
   created() {
     this.getBoardListMethod();
+  },
+  watch: {
+    $route(to) {
+      this.changeList(to.query);
+    }
   },
   components: {
     Pagination

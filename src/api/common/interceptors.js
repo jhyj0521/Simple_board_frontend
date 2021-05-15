@@ -5,7 +5,6 @@ export function setInterceptors(axiosService) {
     function(config) {
       // 요청을 보내기 전에 어떤 처리를 할 수 있다.
       config.headers.Authorization = `Bearer ${store.state.member.token}`;
-      console.log(config);
       return config;
     },
     function(error) {
@@ -17,7 +16,6 @@ export function setInterceptors(axiosService) {
   axiosService.interceptors.response.use(
     function(response) {
       // 요청을 보내고 나서 응답을 받기 전에 어떤 처리를 할 수 있다.
-      console.log(response);
       return response;
     },
     function(error) {

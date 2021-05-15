@@ -8,7 +8,13 @@
 export default {
   methods: {
     routeMain() {
-      this.$router.push("/main");
+      this.$router.push({
+        path: "/main",
+        query: {
+          searchWord: "",
+          currentPageNo: 1
+        }
+      });
     }
   }
 };

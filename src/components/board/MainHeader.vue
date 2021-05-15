@@ -4,7 +4,7 @@
       <button class="btn_basic" @click="addPost">글쓰기</button>
     </div>
     <div class="title_center">
-      <span>Main</span>
+      <span @click="routeMainPage">Main</span>
     </div>
     <div class="title_rightNav">
       <ul>
@@ -35,6 +35,21 @@ export default {
     },
     addPost() {
       this.$router.push("/post/add");
+    },
+    routeMainPage() {
+      if (
+        this.$route.query.searchWord === "" &&
+        this.$route.query.currentPageNo == 1
+      ) {
+        return;
+      }
+      this.$router.push({
+        path: "/main",
+        query: {
+          searchWord: "",
+          currentPageNo: 1
+        }
+      });
     }
   }
 };

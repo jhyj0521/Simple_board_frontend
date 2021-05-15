@@ -47,7 +47,13 @@ export default {
         "사이트에서 나가시겠습니까?\n변경사항이 저장되지 않을 수 있습니다."
       );
       if (result) {
-        this.$router.push("/main");
+        this.$router.push({
+          path: "/main",
+          query: {
+            searchWord: "",
+            currentPageNo: 1
+          }
+        });
       }
     }
   }

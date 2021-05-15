@@ -55,7 +55,13 @@ export default {
         };
         const result = await this.addPost(post);
         console.log(result);
-        this.$router.push("/main");
+        this.$router.push({
+          path: "/main",
+          query: {
+            searchWord: "",
+            currentPageNo: 1
+          }
+        });
       } catch (error) {
         console.log(error.response);
         alert(error.response.data.message);

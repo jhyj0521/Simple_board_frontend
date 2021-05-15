@@ -13,7 +13,6 @@ export const board = {
     },
     async getBoardSearchList({ commit }, criteria) {
       const result = await boardService.getBoardSearchList(criteria);
-      console.log(result.data.data);
       return result.data.data;
     },
     async getBoardDetail({ commit, dispatch }, boardNo) {
@@ -32,8 +31,7 @@ export const board = {
       await boardService.editPost(post);
     },
     async deletePost({ commit }, boardNo) {
-      const result = await boardService.deletePost(boardNo);
-      console.log(result);
+      await boardService.deletePost(boardNo);
     },
     async clickLike({ commit, dispatch }, boardNo) {
       await boardService.clickLike(boardNo);

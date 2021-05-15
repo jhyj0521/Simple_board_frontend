@@ -64,7 +64,13 @@ export default {
         }
 
         await this.deletePost(this.boardNo);
-        this.$router.replace("/main");
+        this.$router.replace({
+          path: "/main",
+          query: {
+            searchWord: "",
+            currentPageNo: 1
+          }
+        });
       } catch (error) {
         console.log(error.response);
       }
@@ -77,7 +83,13 @@ export default {
       this.$router.push("/login");
     },
     routeMainPage() {
-      this.$router.push("/main");
+      this.$router.push({
+        path: "/main",
+        query: {
+          searchWord: "",
+          currentPageNo: 1
+        }
+      });
     }
   }
 };
