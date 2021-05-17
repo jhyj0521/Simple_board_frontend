@@ -105,7 +105,7 @@ export default {
 
         const param = {
           boardNo: this.boardNo,
-          content: this.formatContent(this.content)
+          content: this.content
         };
 
         await this.addComment(param);
@@ -145,10 +145,6 @@ export default {
     },
     afterAddComment() {
       this.content = "";
-    },
-    formatContent(str) {
-      str = str.replace(/\n/g, "<br/>");
-      return str.replace(/ /g, "&nbsp;&nbsp;");
     }
   }
 };

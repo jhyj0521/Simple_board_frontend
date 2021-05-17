@@ -52,9 +52,16 @@ export const board = {
   },
   mutations: {
     setBoardInfo(state, info) {
+      let boardContent = info.content.replace(/\n/g, "<br/>");
+      boardContent = boardContent.replace(/ /g, "&nbsp;&nbsp;");
+      info.content = boardContent;
       state.boardInfo = info;
     },
     setCommentList(state, list) {
+      list.forEach(comment => {
+        comment.content = comment.content.replace(/\n/g, "<br/>");
+        comment.content = comment.content.replace(/ /g, "&nbsp;&nbsp;");
+      });
       state.commentList = list;
     }
   }

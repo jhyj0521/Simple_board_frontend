@@ -51,7 +51,7 @@ export default {
 
         const post = {
           title: this.title,
-          content: this.formatContent(this.content)
+          content: this.content
         };
         const result = await this.addPost(post);
         console.log(result);
@@ -66,10 +66,6 @@ export default {
         console.log(error.response);
         alert(error.response.data.message);
       }
-    },
-    formatContent(str) {
-      str = str.replace(/\n/g, "<br/>");
-      return str.replace(/ /g, "&nbsp;&nbsp;");
     }
   }
 };

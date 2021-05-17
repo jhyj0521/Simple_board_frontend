@@ -67,7 +67,7 @@ export default {
         const post = {
           boardNo: this.boardNo,
           title: this.title,
-          content: this.formatContent(this.content)
+          content: this.content
         };
 
         await this.editPost(post);
@@ -76,10 +76,6 @@ export default {
         console.log(error.response);
         alert(error.response.data.message);
       }
-    },
-    formatContent(str) {
-      str = str.replace(/\n/g, "<br/>");
-      return str.replace(/ /g, "&nbsp;&nbsp;");
     },
     formatEditContent(str) {
       str = str.replace(/(<br\/>)/g, "\n");
